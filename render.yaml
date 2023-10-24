@@ -1,0 +1,4 @@
+web:
+  - type: web
+    buildCommand: npm install
+    startCommand: npm start
