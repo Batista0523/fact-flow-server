@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flowfact-frontend
+    buildCommand: npm install
+    startCommand: npm start
+    root: /opt/render/project/src/flowFact-app/flowfact  
+
+
+  - type: web
+    name: flowfact-backend
+    buildCommand: npm install
+    startCommand: npm start
+    root: /opt/render/project/src/flowFact-app/flowfact\ server  
