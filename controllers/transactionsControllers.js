@@ -5,6 +5,7 @@ const getAlltransactions = (req, res) => {
 };
 
 const getTransactionsById = (req, res) => {
+ 
   const { id } = req.params;
   const transaction = transactions.find((trans) => trans.id === id);
 
@@ -16,17 +17,20 @@ const getTransactionsById = (req, res) => {
 };
 
 const createTransaction = (req, res) => {
-  const { item_name, amount, spends, from, date, category } = req.body;
+
+  const { item_name, amount, income, from, date, category } = req.body;
   const id = String(transactions.length + 1);
+  
   const newTransaction = {
-    id,
-    item_name,
-    amount,
-    spends,
-    from,
-    category,
-    date,
+    id: id, 
+    item_name: item_name, 
+    amount: amount, 
+    income: income, 
+    from: from, 
+    category: category, 
+    date: date, 
   };
+  
   transactions.push(newTransaction);
   res.json({
     message: "Transaction created successfully",
@@ -34,9 +38,10 @@ const createTransaction = (req, res) => {
   });
 };
 
+
 const updateTransaction = (req, res) => {
   const { id } = req.params;
-  const { item_name, amount, spends, from, date, category } = req.body;
+  const { item_name, amount, income, from, date, category } = req.body;
   const transactionIndex = transactions.findIndex((trans) => trans.id === id);
 
   if (transactionIndex === -1) {
@@ -49,7 +54,7 @@ const updateTransaction = (req, res) => {
     date,
     from,
     category,
-    spends,
+    income,
     amount,
   };
   transactions[transactionIndex] = updatedtransaction;
